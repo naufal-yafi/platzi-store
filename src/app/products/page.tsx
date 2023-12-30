@@ -1,6 +1,9 @@
 import app from "@config/app";
+import { workSans } from "@config/fonts";
 import SchemaInfo from "@interface/SchemaProduct";
+import ListProducts from "@partial/ListProducts";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "See All Product | Platzi Store",
@@ -14,13 +17,30 @@ async function getAllProduct() {
   return res.json();
 }
 
-export default async function Home() {
-  const { info, pages, data }: SchemaInfo = await getAllProduct();
+export default async function Products() {
+  const { pages, data }: SchemaInfo = await getAllProduct();
+
   return (
-    <main className="">
-      {JSON.stringify(info)}
-      {JSON.stringify(pages)}
-      {JSON.stringify(data)}
+    <main className={`${workSans.className} pt-36`}>
+      <ListProducts
+        data={data}
+        info={`Showing ${pages.data_show.from} - ${pages.data_show.to} of ${pages.total}`}
+      />
+
+      <section
+        id="pagination"
+        className="w-full mt-10 flex justify-center items-center"
+      >
+        <div className="border-t border-l border-black">
+          {pages.available_page.map((paginate) => (
+            <Link href={`/products?page=${paginate}`} key={paginate}>
+              <button className="border-b border-r border-black px-3 py-1 text-sm">
+                {paginate}
+              </button>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

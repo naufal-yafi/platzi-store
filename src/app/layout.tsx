@@ -1,4 +1,6 @@
 import { inter } from "@config/fonts";
+import Footer from "@partial/Footer";
+import Header from "@partial/Header";
 import "@style/globals.css";
 import { Metadata } from "next";
 
@@ -15,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-white text-black`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
