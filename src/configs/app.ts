@@ -1,5 +1,5 @@
 const app = {
-  host: "http://localhost:3000",
+  host: process.env.APP_HOST,
 };
 
 export default app;
