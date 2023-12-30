@@ -1,3 +1,5 @@
+import ModelProduct from "./ModelProduct";
+
 interface SchemaProduct {
   info: {
     page: number;
@@ -14,7 +16,7 @@ interface SchemaProduct {
     total: number;
     available_show_per_page: number[];
   };
-  data: {};
+  data: ModelProduct[];
 }
 
 export default SchemaProduct;

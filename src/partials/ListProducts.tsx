@@ -1,10 +1,11 @@
 "use client";
 
-import useHandlePreviewProduct from "@/hooks/useHandlePreviewProduct";
 import CardProduct from "@component/CardProduct";
+import useHandlePreviewProduct from "@hook/useHandlePreviewProduct";
 import iconMediumPreview from "@image/double.svg";
 import iconSmallPreview from "@image/multiple.svg";
 import iconLargePreview from "@image/single.svg";
+import ModelProduct from "@interface/ModelProduct";
 import Image from "next/image";
 import { Fragment } from "react";
 
@@ -45,9 +46,9 @@ const ListProducts = (props: { data: any; info: string }) => {
       </section>
 
       <section className={`grid border-black grid-${size}`}>
-        {props.data.map((product: any) => (
+        {props.data.map((product: ModelProduct) => (
           <CardProduct
-            key={product}
+            key={product.id}
             image={product.images[0]}
             title={product.title}
             price={product.price}

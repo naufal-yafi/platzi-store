@@ -1,9 +1,9 @@
 "use client";
 
+import useHandleHeader from "@hook/useHandleHeader";
+import imgLogo from "@image/platzi-logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import imgLogo from "@image/platzi-logo.png";
-import useHandleHeader from "@/hooks/useHandleHeader";
 
 const Header = () => {
   const { visible } = useHandleHeader();

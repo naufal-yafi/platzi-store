@@ -1,4 +1,4 @@
-import { slugify, toIDR } from "@/lib/utils";
+import { slugify, toIDR } from "@lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,7 +6,7 @@ const CardProduct = (props: {
   image: string;
   title: string;
   price: number;
-  size?: "small" | "medium" | "large";
+  size: "small" | "medium" | "large";
 }) => {
   const LINK: string = `/products/${slugify(props.title)}`;
 
@@ -53,10 +53,6 @@ const CardProduct = (props: {
       )}
     </div>
   );
-};
-
-CardProduct.defaultProps = {
-  size: "large",
 };
 
 export default CardProduct;

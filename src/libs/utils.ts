@@ -1,4 +1,4 @@
-export function slugify(title: string) {
+export function slugify(title: string): string {
   return title
     .toLowerCase()
     .trim()
@@ -8,7 +8,7 @@ export function slugify(title: string) {
     .replace(/--+/g, "-");
 }
 
-export function toIDR(usd: number) {
+export function toIDR(usd: number): string {
   const amountInIDR = usd * 15000;
 
   const formattedAmount = amountInIDR.toLocaleString("id-ID", {
