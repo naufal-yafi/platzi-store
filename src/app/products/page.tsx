@@ -9,16 +9,30 @@ export const metadata: Metadata = {
   title: "See All Product | Platzi Store",
 };
 
-async function getAllProduct() {
-  const res = await fetch(`${app.host}/api/products`, {
-    method: "GET",
-  });
+async function getAllProduct(page: string, limit?: string) {
+  const PAGE = page ?? 1;
+  const LIMIT = limit ?? 10;
+
+  const res = await fetch(
+    `${app.host}/api/products?page=${PAGE}&limit=${LIMIT}`,
+    {
+      method: "GET",
+    }
+  );
 
   return res.json();
 }
 
-export default async function Products() {
-  const { pages, data }: SchemaProduct = await getAllProduct();
+export default async function Products({
+  searchParams,
+}: Readonly<{
+  searchParams: { page: string; show: string };
+}>) {
+  const SHOW = searchParams.show ?? 10;
+  const { pages, data }: SchemaProduct = await getAllProduct(
+    searchParams.page,
+    SHOW
+  );
 
   return (
     <main className={`${workSans.className} pt-36`}>
@@ -33,7 +47,10 @@ export default async function Products() {
       >
         <div className="border-t border-l border-black">
           {pages.available_page.map((paginate: number) => (
-            <Link href={`/products?page=${paginate}`} key={paginate}>
+            <Link
+              href={`/products?page=${paginate}&show=${SHOW}`}
+              key={paginate}
+            >
               <button className="border-b border-r border-black px-3 py-1 text-sm">
                 {paginate}
               </button>

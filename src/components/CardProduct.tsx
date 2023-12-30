@@ -9,6 +9,13 @@ const CardProduct = (props: {
   size: "small" | "medium" | "large";
 }) => {
   const LINK: string = `/products/${slugify(props.title)}`;
+  let height: string = "h-[200px]";
+
+  if (props.size === "small") {
+    height = "h-[120px]";
+  } else if (props.size === "medium") {
+    height = "h-[140px]";
+  }
 
   return (
     <div
@@ -23,7 +30,7 @@ const CardProduct = (props: {
           width={1000}
           height={1000}
           quality={100}
-          className={`border-black w-full ${
+          className={`border-black ${height} w-full object-cover ${
             props.size !== "medium" ? "" : "border-b"
           }`}
         />

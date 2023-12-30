@@ -38,7 +38,7 @@ const Header = () => {
         </nav>
       </div>
       <div className="flex w-full justify-between items-center">
-        <button className="text-xs uppercase">Filters</button>
+        <button className="text-xs uppercase font-semibold">Filters</button>
 
         <Link href="/search">
           <button className="flex text-xs font-light gap-2 items-center justify-end py-1 px-3 border border-black w-[120px] uppercase">
